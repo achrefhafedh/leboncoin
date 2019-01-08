@@ -1,6 +1,7 @@
 import React, { Component, FormEvent } from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { assoc } from 'ramda';
 
@@ -11,9 +12,7 @@ import { User, UserStore } from '../../types';
 
 import './Auth.scss';
 
-type OwnProps = {
-  history?: any;
-};
+type OwnProps = {} & RouteComponentProps;
 
 type StateProps = {};
 
