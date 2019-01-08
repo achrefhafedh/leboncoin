@@ -81,6 +81,7 @@
   }
 
   .guest {
+    cursor: pointer;
     color: lighten($blue, 10%);
     line-height: 0.5em;
     position: relative;

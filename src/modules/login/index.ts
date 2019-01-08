@@ -10,3 +10,5 @@ export const registerLogin = () => {
 };
 
 export * from './redux/reducer';
+
+export * from './routes';

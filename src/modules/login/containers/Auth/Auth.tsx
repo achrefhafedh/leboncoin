@@ -1,26 +1,124 @@
-import React from 'react';
+import React, { Component, FormEvent } from 'react';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+import { assoc } from 'ramda';
+
+import { Store } from 'store';
+import { userLogged } from '../../redux/actions';
+import { asyncLocalStorage } from 'modules/page-layout/helpers';
+import { User, UserStore } from '../../types';
+
 import './Auth.scss';
 
-export const Auth = () => (
-  <div className="log-form">
-    <h2>Login to your account</h2>
-    <div className="form">
-      <input
-        type="text"
-        title="username"
-        placeholder="username"
-        value="admin"
-      />
-      <input
-        type="password"
-        title="username"
-        placeholder="password"
-        value="admin"
-      />
-      <button className="btn">Login</button>
-      <a className="guest" href="#">
-        Guest
-      </a>
+type OwnProps = {};
+
+type StateProps = {};
+
+type DispatchProps = {
+  login: (user: UserStore) => void;
+};
+
+type AuthProps = StateProps & DispatchProps & OwnProps;
+
+export type AuthState = {
+  user: User;
+};
+
+export class AuthContainer extends Component<AuthProps, AuthState> {
+  constructor(props: AuthProps) {
+    super(props);
+    this.state = {
+      user: {
+        username: '',
+        password: '',
+      },
+    };
+  }
+
+  componentDidMount() {
+    asyncLocalStorage.getItem('user').then(response => {
+      if (response) {
+        const user = JSON.parse(response);
+        this.loginHandler(user);
+        // TODO: Redirection to posts page
+      }
+    });
+  }
+
+  loginHandler = (user: User) => {
+    const { login } = this.props;
+    const { username } = user;
+    const params: UserStore = {
+      username,
+      type: 'logged',
+    };
+    login(params);
+  };
+
+  changeValue = (event: FormEvent<HTMLInputElement>, key: string) => {
+    const { user } = this.state;
+    const value = event.currentTarget.value;
+    this.setState(() => ({
+      user: assoc(key, value, user),
+    }));
+  };
+
+  guestLogged = () => {
+    const { login } = this.props;
+    const params: UserStore = {
+      username: 'Anonyme',
+      type: 'guest',
+    };
+    login(params);
+  };
+
+  renderContent = () => (
+    <div className="log-form">
+      <h2>Login to your account</h2>
+      <div className="form">
+        <input
+          onChange={event => this.changeValue(event, 'username')}
+          type="text"
+          title="username"
+          placeholder="username"
+        />
+        <input
+          onChange={event => this.changeValue(event, 'password')}
+          type="password"
+          title="username"
+          placeholder="password"
+        />
+        <button
+          onClick={() => this.loginHandler(this.state.user)}
+          className="btn"
+        >
+          Login
+        </button>
+        <div onClick={this.guestLogged} className="guest">
+          Guest
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+  render() {
+    return this.renderContent();
+  }
+}
+
+const mapStateToProps = (state: Store, onProps: OwnProps): StateProps => {
+  return {};
+};
+
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<Store, any, any>
+): DispatchProps => ({
+  login: (user: UserStore) => {
+    dispatch(userLogged(user));
+  },
+});
+
+export const Auth = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthContainer);
