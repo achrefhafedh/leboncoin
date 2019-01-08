@@ -26,7 +26,7 @@ describe('renders and execute function without crashing', () => {
   it('execute function guestLogged', () => {
     const login = jest.fn();
     const wrapper = shallow<AuthContainer>(<AuthContainer login={login} />);
-    wrapper.instance().guestLogged();
+    wrapper.instance().guestLoggedHandler();
   });
 
   it('execute function changeValue', () => {
@@ -37,6 +37,6 @@ describe('renders and execute function without crashing', () => {
       },
     } as React.ChangeEvent<HTMLInputElement>;
     const wrapper = shallow<AuthContainer>(<AuthContainer login={login} />);
-    wrapper.instance().changeValue(event, 'user');
+    wrapper.instance().changeValueHandler(event, 'user');
   });
 });

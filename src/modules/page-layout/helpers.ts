@@ -4,4 +4,7 @@ export const asyncLocalStorage = {
     Promise.resolve().then(() => localStorage.setItem(key, value)),
   getItem: (key: string) =>
     Promise.resolve().then(() => localStorage.getItem(key)),
+  clear: () => {
+    localStorage.clear();
+  },
 };

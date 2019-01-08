@@ -11,7 +11,9 @@ import { User, UserStore } from '../../types';
 
 import './Auth.scss';
 
-type OwnProps = {};
+type OwnProps = {
+  history?: any;
+};
 
 type StateProps = {};
 
@@ -23,6 +25,7 @@ type AuthProps = StateProps & DispatchProps & OwnProps;
 
 export type AuthState = {
   user: User;
+  error: boolean;
 };
 
 export class AuthContainer extends Component<AuthProps, AuthState> {
@@ -33,6 +36,7 @@ export class AuthContainer extends Component<AuthProps, AuthState> {
         username: '',
         password: '',
       },
+      error: false,
     };
   }
 
@@ -40,23 +44,27 @@ export class AuthContainer extends Component<AuthProps, AuthState> {
     asyncLocalStorage.getItem('user').then(response => {
       if (response) {
         const user = JSON.parse(response);
-        this.loginHandler(user);
-        // TODO: Redirection to posts page
+        user.username !== 'Anonyme'
+          ? this.loginHandler(user)
+          : this.guestLoggedHandler();
       }
     });
   }
 
   loginHandler = (user: User) => {
-    const { login } = this.props;
-    const { username } = user;
-    const params: UserStore = {
-      username,
-      type: 'logged',
-    };
-    login(params);
+    const { login, history } = this.props;
+    const { username, password } = user;
+    if (username !== '' && password !== '') {
+      const params: UserStore = {
+        username,
+        type: 'logged',
+      };
+      login(params);
+      history.push('/posts');
+    } else this.setState(() => ({ error: true }));
   };
 
-  changeValue = (event: FormEvent<HTMLInputElement>, key: string) => {
+  changeValueHandler = (event: FormEvent<HTMLInputElement>, key: string) => {
     const { user } = this.state;
     const value = event.currentTarget.value;
     this.setState(() => ({
@@ -64,13 +72,14 @@ export class AuthContainer extends Component<AuthProps, AuthState> {
     }));
   };
 
-  guestLogged = () => {
-    const { login } = this.props;
+  guestLoggedHandler = () => {
+    const { login, history } = this.props;
     const params: UserStore = {
       username: 'Anonyme',
       type: 'guest',
     };
     login(params);
+    history.push('/posts');
   };
 
   renderContent = () => (
@@ -78,13 +87,13 @@ export class AuthContainer extends Component<AuthProps, AuthState> {
       <h2>Login to your account</h2>
       <div className="form">
         <input
-          onChange={event => this.changeValue(event, 'username')}
+          onChange={event => this.changeValueHandler(event, 'username')}
           type="text"
           title="username"
           placeholder="username"
         />
         <input
-          onChange={event => this.changeValue(event, 'password')}
+          onChange={event => this.changeValueHandler(event, 'password')}
           type="password"
           title="username"
           placeholder="password"
@@ -95,10 +104,13 @@ export class AuthContainer extends Component<AuthProps, AuthState> {
         >
           Login
         </button>
-        <div onClick={this.guestLogged} className="guest">
+        <div onClick={this.guestLoggedHandler} className="guest">
           Guest
         </div>
       </div>
+      {this.state.error && (
+        <div className="error">login or password incorrect</div>
+      )}
     </div>
   );
   render() {

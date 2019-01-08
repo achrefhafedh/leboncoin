@@ -1,5 +1,5 @@
 import { AppRoute } from 'modules/page-layout';
-import { Auth } from './containers/Auth';
+import { Auth } from './containers';
 
 export const loginRoutes: AppRoute[] = [
   {

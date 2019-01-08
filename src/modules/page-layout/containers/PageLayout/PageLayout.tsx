@@ -2,9 +2,10 @@ import React from 'react';
 import { Route, Redirect, Switch, BrowserRouter } from 'react-router-dom';
 
 import { loginRoutes } from 'modules/login';
+import { postsRoutes } from 'modules/posts';
 
 const defaultRedirection = () => <Redirect to="/login" />;
-const routes = [...loginRoutes];
+const routes = [...loginRoutes, ...postsRoutes];
 
 export const PageLayout = () => {
   return (
