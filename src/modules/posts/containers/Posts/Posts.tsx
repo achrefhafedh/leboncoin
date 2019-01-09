@@ -1,6 +1,19 @@
-import React from 'react';
-import { asyncLocalStorage } from 'modules/page-layout/helpers';
+import React, { Component } from 'react';
+import { postsHeaderLayoutHOC } from '../../hoc/postsHeaderLayout';
 
-export const Posts = () => (
-  <div onClick={() => asyncLocalStorage.clear()}>Posts</div>
-);
+type OwnProps = {};
+
+type StateProps = {};
+
+type DispatchProps = {};
+
+type PostsProps = StateProps & DispatchProps & OwnProps;
+
+type PostsState = {};
+class PostsContainer extends Component<PostsProps, PostsState> {
+  render() {
+    return <div>Posts</div>;
+  }
+}
+
+export const Posts = postsHeaderLayoutHOC(<PostsContainer />);
