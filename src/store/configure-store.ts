@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import { registerLogin, LoginStore } from 'modules/login';
+import { registerPosts } from 'modules/posts';
 
 import { createRootReducer } from './reducers';
 
@@ -17,6 +18,7 @@ export interface Store {
 export const configureStore = () => {
   // Register reducers
   registerLogin();
+  registerPosts();
 
   const rootReducer = createRootReducer();
   const middlewares: Middleware[] = [thunk];

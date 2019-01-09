@@ -1,1 +1,4 @@
-export type types = 'types';
+export type PostType = {
+  content: string;
+  type: string;
+};
