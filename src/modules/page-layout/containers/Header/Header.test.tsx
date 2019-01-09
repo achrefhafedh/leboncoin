@@ -8,8 +8,8 @@ configure({ adapter: new Adapter() });
 
 describe('renders and execute function without crashing', () => {
   it('render without crashing', () => {
-    const auth = shallow(<Header />);
-    expect(auth).toMatchSnapshot();
+    const header = shallow(<Header />);
+    expect(header).toMatchSnapshot();
   });
 
   it('execute function logout', () => {

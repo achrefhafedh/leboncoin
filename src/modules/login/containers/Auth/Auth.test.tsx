@@ -7,9 +7,15 @@ import { AuthContainer } from './Auth';
 configure({ adapter: new Adapter() });
 
 describe('renders and execute function without crashing', () => {
+  let login: () => void;
+  let mock: any;
+
+  beforeEach(() => {
+    login = jest.fn();
+    mock = jest.fn();
+  });
+
   it('render without crashing', () => {
-    const login = jest.fn();
-    let mock: any = jest.fn();
     const auth = shallow(
       <AuthContainer
         match={mock}
@@ -22,8 +28,6 @@ describe('renders and execute function without crashing', () => {
   });
 
   it('execute function loginHandler', () => {
-    const login = jest.fn();
-    let mock: any = jest.fn();
     const historyMock: any = { push: jest.fn() };
     const user = {
       username: 'Achraf',
@@ -41,8 +45,6 @@ describe('renders and execute function without crashing', () => {
   });
 
   it('execute function guestLogged', () => {
-    const login = jest.fn();
-    let mock: any = jest.fn();
     const historyMock: any = { push: jest.fn() };
     const wrapper = shallow<AuthContainer>(
       <AuthContainer
@@ -56,8 +58,6 @@ describe('renders and execute function without crashing', () => {
   });
 
   it('execute function changeValue', () => {
-    const login = jest.fn();
-    let mock: any = jest.fn();
     const event = {
       currentTarget: {
         value: 'value',
