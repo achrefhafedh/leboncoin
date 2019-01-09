@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink, RouteComponentProps } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
-import { asyncLocalStorage } from 'modules/page-layout/helpers';
+import { asyncLocalStorage } from '../../helpers';
 
 import './Header.scss';
 
@@ -48,7 +48,7 @@ export class Header extends Component<HeaderProps, HeaderState> {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/addPost">
+            <NavLink exact to="/post">
               Add post
             </NavLink>
           </li>

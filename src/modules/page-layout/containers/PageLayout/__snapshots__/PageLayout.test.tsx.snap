@@ -30,6 +30,11 @@ ShallowWrapper {
             path="/posts"
           />
           <Route
+            component={[Function]}
+            exact={true}
+            path="/post"
+          />
+          <Route
             render={[Function]}
           />
         </Switch>
@@ -54,6 +59,11 @@ ShallowWrapper {
             path="/posts"
           />
           <Route
+            component={[Function]}
+            exact={true}
+            path="/post"
+          />
+          <Route
             render={[Function]}
           />
         </Switch>,
@@ -75,6 +85,11 @@ ShallowWrapper {
                 component={[Function]}
                 exact={true}
                 path="/posts"
+              />,
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/post"
               />,
             ],
             <Route
@@ -105,6 +120,19 @@ ShallowWrapper {
               "component": [Function],
               "exact": true,
               "path": "/posts",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/post",
             },
             "ref": null,
             "rendered": null,
@@ -147,6 +175,11 @@ ShallowWrapper {
               path="/posts"
             />
             <Route
+              component={[Function]}
+              exact={true}
+              path="/post"
+            />
+            <Route
               render={[Function]}
             />
           </Switch>
@@ -171,6 +204,11 @@ ShallowWrapper {
               path="/posts"
             />
             <Route
+              component={[Function]}
+              exact={true}
+              path="/post"
+            />
+            <Route
               render={[Function]}
             />
           </Switch>,
@@ -192,6 +230,11 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/posts"
+                />,
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/post"
                 />,
               ],
               <Route
@@ -222,6 +265,19 @@ ShallowWrapper {
                 "component": [Function],
                 "exact": true,
                 "path": "/posts",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "exact": true,
+                "path": "/post",
               },
               "ref": null,
               "rendered": null,

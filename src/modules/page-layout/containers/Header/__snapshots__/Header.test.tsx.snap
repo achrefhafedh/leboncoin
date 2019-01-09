@@ -37,7 +37,7 @@ ShallowWrapper {
               activeClassName="active"
               aria-current="page"
               exact={true}
-              to="/addPost"
+              to="/post"
             >
               Add post
             </NavLink>
@@ -76,7 +76,7 @@ ShallowWrapper {
                 activeClassName="active"
                 aria-current="page"
                 exact={true}
-                to="/addPost"
+                to="/post"
               >
                 Add post
               </NavLink>
@@ -134,7 +134,7 @@ ShallowWrapper {
                 activeClassName="active"
                 aria-current="page"
                 exact={true}
-                to="/addPost"
+                to="/post"
               >
                 Add post
               </NavLink>,
@@ -149,7 +149,7 @@ ShallowWrapper {
                 "aria-current": "page",
                 "children": "Add post",
                 "exact": true,
-                "to": "/addPost",
+                "to": "/post",
               },
               "ref": null,
               "rendered": "Add post",
@@ -213,7 +213,7 @@ ShallowWrapper {
                 activeClassName="active"
                 aria-current="page"
                 exact={true}
-                to="/addPost"
+                to="/post"
               >
                 Add post
               </NavLink>
@@ -252,7 +252,7 @@ ShallowWrapper {
                   activeClassName="active"
                   aria-current="page"
                   exact={true}
-                  to="/addPost"
+                  to="/post"
                 >
                   Add post
                 </NavLink>
@@ -310,7 +310,7 @@ ShallowWrapper {
                   activeClassName="active"
                   aria-current="page"
                   exact={true}
-                  to="/addPost"
+                  to="/post"
                 >
                   Add post
                 </NavLink>,
@@ -325,7 +325,7 @@ ShallowWrapper {
                   "aria-current": "page",
                   "children": "Add post",
                   "exact": true,
-                  "to": "/addPost",
+                  "to": "/post",
                 },
                 "ref": null,
                 "rendered": "Add post",
