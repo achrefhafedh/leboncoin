@@ -4,7 +4,10 @@ exports[`renders and execute function without crashing render without crashing 1
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AuthContainer
+    history={[MockFunction]}
+    location={[MockFunction]}
     login={[MockFunction]}
+    match={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -51,6 +54,7 @@ ShallowWrapper {
             Guest
           </div>
         </div>,
+        false,
       ],
       "className": "log-form",
     },
@@ -159,6 +163,7 @@ ShallowWrapper {
         ],
         "type": "div",
       },
+      false,
     ],
     "type": "div",
   },
@@ -200,6 +205,7 @@ ShallowWrapper {
               Guest
             </div>
           </div>,
+          false,
         ],
         "className": "log-form",
       },
@@ -308,6 +314,7 @@ ShallowWrapper {
           ],
           "type": "div",
         },
+        false,
       ],
       "type": "div",
     },

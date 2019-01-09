@@ -2,12 +2,12 @@ import React, { Component, FormEvent } from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RouteComponentProps } from 'react-router-dom';
-
 import { assoc } from 'ramda';
 
 import { Store } from 'store';
-import { userLogged } from '../../redux/actions';
 import { asyncLocalStorage } from 'modules/page-layout/helpers';
+
+import { userLogged } from '../../redux/actions';
 import { User, UserStore } from '../../types';
 
 import './Auth.scss';
