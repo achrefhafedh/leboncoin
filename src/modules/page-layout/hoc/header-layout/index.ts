@@ -1,0 +1,1 @@
+export { headerLayoutHOC } from './headerLayoutHOC';

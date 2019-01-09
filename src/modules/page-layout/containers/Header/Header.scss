@@ -1,0 +1,32 @@
+@import '../../../../assets/colors.scss';
+
+.header {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $grey;
+  li {
+    cursor: pointer;
+    list-style-type: none;
+    display: inline-block;
+    a,
+    div {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      &:hover {
+        background-color: $blue;
+        color: white;
+      }
+      &.active {
+        background-color: $blue;
+      }
+    }
+    &:last-child {
+      float: right;
+    }
+  }
+}
