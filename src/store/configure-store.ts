@@ -33,13 +33,5 @@ export const configureStore = () => {
     composeWithDevTools(applyMiddleware(...middlewares))
   );
 
-  // if (module.hot) {
-  //   // Enable Webpack hot module replacement for reducers
-  //   module.hot.accept(() => {
-  //     const nextRootReducer = require('./reducers').default; // eslint-disable-line global-require
-  //     store.replaceReducer(nextRootReducer);
-  //   });
-  // }
-
   return store;
 };
