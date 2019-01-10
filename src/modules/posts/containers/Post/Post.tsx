@@ -68,6 +68,7 @@ export class PostContainer extends Component<PostProps, PostState> {
     const message = event.currentTarget.value;
     this.setState(() => ({
       message,
+      validPost: false,
     }));
   };
 

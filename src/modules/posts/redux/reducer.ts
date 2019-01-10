@@ -1,9 +1,5 @@
-import { PostType } from '../types';
+import { PostType, PostsStore } from '../types';
 import { addPostSuccess } from './actions';
-
-export type PostsStore = {
-  posts: PostType[];
-};
 
 export type PostsAction = ReturnType<typeof addPostSuccess>;
 

@@ -1,5 +1,7 @@
 import { assoc } from 'ramda';
 
+import { asyncLocalStorage } from 'modules/page-layout/helpers';
+
 import { UserStore } from '../types';
 import { userLoggedSuccess, userLoggedFail } from './actions';
 

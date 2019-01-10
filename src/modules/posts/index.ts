@@ -12,3 +12,5 @@ export const registerPosts = () => {
 export * from './redux/reducer';
 
 export * from './routes';
+
+export * from './types';

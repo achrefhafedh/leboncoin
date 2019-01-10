@@ -4,13 +4,14 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import { registerLogin, LoginStore } from 'modules/login';
-import { registerPosts } from 'modules/posts';
+import { registerPosts, PostsStore } from 'modules/posts';
 
 import { createRootReducer } from './reducers';
 
 export interface Store {
   module: {
     login: LoginStore;
+    posts: PostsStore;
   };
 }
 

@@ -43,7 +43,7 @@ export class AuthContainer extends Component<AuthProps, AuthState> {
     asyncLocalStorage.getItem('user').then(response => {
       if (response) {
         const user = JSON.parse(response);
-        user.username !== 'Anonyme'
+        user.type !== 'guest' && user.username !== ''
           ? this.loginHandler(user)
           : this.guestLoggedHandler();
       }
