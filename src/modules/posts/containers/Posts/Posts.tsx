@@ -5,6 +5,7 @@ import { getModuleState } from 'redux-register-module';
 import { Store } from 'store';
 import { PostType } from '../../types';
 import { postsHeaderLayoutHOC } from '../../hoc/postsHeaderLayout';
+import './Posts.scss';
 
 type OwnProps = {};
 
@@ -41,11 +42,15 @@ class PostsContainer extends Component<PostsProps, PostsState> {
   renderContent = () => {
     const { posts, userType } = this.props;
     if (!posts || !userType) return null;
+    let postsFiltred = posts;
+    if (userType === 'guest') {
+      postsFiltred = posts.filter(post => post.type === 'public');
+    }
     return (
       <>
-        {posts.length === 0 && <div className="empty">Empty Posts</div>}
-        {posts.map((post, key) => (
-          <div className="post" key={key}>
+        {postsFiltred.length === 0 && <div className="empty">Empty Posts</div>}
+        {postsFiltred.map((post, key) => (
+          <div className="posts" key={key}>
             {post.content}
           </div>
         ))}
